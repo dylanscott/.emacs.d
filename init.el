@@ -26,6 +26,11 @@
       custom-file (expand-file-name "custom.el" user-emacs-directory))
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
+(setq backup-directory-alist
+      `(("." . ,(concat user-emacs-directory "backups"))))
+(setq auto-save-file-name-transforms
+      `((".*" ,(concat user-emacs-directory "auto-save/") t)))
+
 (use-package emacs
   :config
   (require-theme 'modus-themes)

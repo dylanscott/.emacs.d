@@ -76,3 +76,8 @@
               ("C-k" . vertico-previous))
   :init
   (vertico-mode))
+
+(use-package marginalia
+  :ensure t
+  :init
+  (marginalia-mode))

@@ -45,6 +45,8 @@
   :init
   (setq evil-want-keybinding nil)
   (setq evil-want-C-u-scroll t)
+  (setq evil-vsplit-window-right t)
+  (setq evil-split-window-below t)
   :config
   (evil-mode 1))
 
@@ -53,6 +55,10 @@
   :ensure t
   :config
   (evil-collection-init))
+
+(use-package savehist
+  :init
+  (savehist-mode))
 
 (use-package vertico
   :ensure t

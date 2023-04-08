@@ -34,7 +34,7 @@
 (use-package emacs
   :config
   (require-theme 'modus-themes)
-  (load-theme 'modus-vivendi))
+  (load-theme 'modus-vivendi t))
 
 (use-package vertico
   :ensure t

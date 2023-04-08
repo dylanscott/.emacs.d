@@ -41,7 +41,9 @@
 
 (use-package evil
   :demand t
-  :bind (("<escape>" . keyboard-escape-quit))
+  :bind (("<escape>" . keyboard-escape-quit)
+         :map evil-insert-state-map
+         ("C-k" . nil))
   :init
   (setq evil-want-keybinding nil)
   (setq evil-want-C-u-scroll t)
@@ -53,6 +55,8 @@
 (use-package evil-collection
   :after evil
   :ensure t
+  :custom
+  (evil-collection-setup-minibuffer t)
   :config
   (evil-collection-init))
 
@@ -67,5 +71,8 @@
   (read-buffer-completion-ignore-case t)
   (read-file-name-completion-ignore-case t)
   (completion-styles '(basic substring partial-completion flex))
+  :bind (:map vertico-map
+              ("C-j" . vertico-next)
+              ("C-k" . vertico-previous))
   :init
   (vertico-mode))

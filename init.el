@@ -2,6 +2,9 @@
 (setq gc-cons-threshold 100000000)
 (setq read-process-output-max (* 1024 1024))
 
+(add-to-list 'package-archives
+             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+
 ;; Hide UI
 (menu-bar-mode -1)
 (tool-bar-mode -1)
@@ -35,6 +38,21 @@
   :config
   (require-theme 'modus-themes)
   (load-theme 'modus-vivendi t))
+
+(use-package evil
+  :demand t
+  :bind (("<escape>" . keyboard-escape-quit))
+  :init
+  (setq evil-want-keybinding nil)
+  (setq evil-want-C-u-scroll t)
+  :config
+  (evil-mode 1))
+
+(use-package evil-collection
+  :after evil
+  :ensure t
+  :config
+  (evil-collection-init))
 
 (use-package vertico
   :ensure t

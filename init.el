@@ -81,3 +81,6 @@
   :ensure t
   :init
   (marginalia-mode))
+
+(use-package eglot
+  :ensure t)

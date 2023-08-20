@@ -11,6 +11,7 @@
 (scroll-bar-mode -1)
 
 ;; Better default modes
+(setq mac-option-modifier 'meta)
 (electric-pair-mode t)
 (show-paren-mode 1)
 (setq-default indent-tabs-mode nil)
@@ -37,20 +38,26 @@
 (use-package emacs
   :config
   (require-theme 'modus-themes)
-  (load-theme 'modus-vivendi t))
+  (load-theme 'modus-vivendi-tinted t))
+
+(use-package exec-path-from-shell
+  :ensure t
+  :init (exec-path-from-shell-initialize))
 
 (use-package evil
   :demand t
   :bind (("<escape>" . keyboard-escape-quit)
          :map evil-insert-state-map
-         ("C-k" . nil))
+         ("C-k" . nil)
+         ("C-." . nil))
   :init
   (setq evil-want-keybinding nil)
   (setq evil-want-C-u-scroll t)
   (setq evil-vsplit-window-right t)
   (setq evil-split-window-below t)
   :config
-  (evil-mode 1))
+  (evil-mode 1)
+  (define-key evil-normal-state-map (kbd "C-.") nil))
 
 (use-package evil-collection
   :after evil
@@ -82,5 +89,90 @@
   :init
   (marginalia-mode))
 
+(use-package consult
+  :ensure t
+  :hook (completion-list-mode . consult-preview-at-point-mode)
+  :init
+  (setq register-preview-delay 0.5
+        register-preview-function #'consult-register-format)
+  (advice-add #'register-preview :override #'consult-register-window)
+  (setq xref-show-xrefs-function #'consult-xref
+        xref-show-definitions-function #'consult-xref)
+  (setq consult-narrow-key "<"))
+
+(use-package consult-project-extra
+  :ensure t)
+
+(use-package consult-ls-git
+  :ensure t
+  :bind
+  (("C-c g f" . #'consult-ls-git)
+   ("C-c g F" . #'consult-ls-git-other-window)))
+
+(use-package consult-eglot
+  :ensure t)
+
+(use-package embark
+  :ensure t
+
+  :bind
+  (("C-." . embark-act)         ;; pick some comfortable binding
+   ("M-." . embark-dwim)        ;; good alternative: M-.
+   ("C-h B" . embark-bindings)) ;; alternative for `describe-bindings'
+
+  :init
+  (setq prefix-help-command #'embark-prefix-help-command)
+
+  ;; Show the Embark target at point via Eldoc.  You may adjust the Eldoc
+  ;; strategy, if you want to see the documentation from multiple providers.
+  (add-hook 'eldoc-documentation-functions #'embark-eldoc-first-target)
+  ;; (setq eldoc-documentation-strategy #'eldoc-documentation-compose-eagerly)
+
+  :config
+  ;; Hide the mode line of the Embark live/completions buffers
+  (add-to-list 'display-buffer-alist
+               '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
+                 nil
+                 (window-parameters (mode-line-format . none)))))
+
+(use-package embark-consult
+  :ensure t
+  :hook
+  (embark-collect-mode . consult-preview-at-point-mode))
+
 (use-package eglot
   :ensure t)
+
+;; tree-sitter
+(setq treesit-language-source-alist
+   '((bash "https://github.com/tree-sitter/tree-sitter-bash")
+     (css "https://github.com/tree-sitter/tree-sitter-css")
+     (elisp "https://github.com/Wilfred/tree-sitter-elisp")
+     (html "https://github.com/tree-sitter/tree-sitter-html")
+     (javascript "https://github.com/tree-sitter/tree-sitter-javascript" "master" "src")
+     (json "https://github.com/tree-sitter/tree-sitter-json")
+     (markdown "https://github.com/ikatyang/tree-sitter-markdown")
+     (python "https://github.com/tree-sitter/tree-sitter-python")
+     (toml "https://github.com/tree-sitter/tree-sitter-toml")
+     (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")
+     (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
+     (yaml "https://github.com/ikatyang/tree-sitter-yaml")))
+
+(use-package treesit-auto
+  :ensure t
+  :config
+  (setq treesit-auto-install 'prompt)
+  (global-treesit-auto-mode))
+
+(use-package clojure-mode
+  :ensure t
+  :mode (("\\.clj\\'" . clojure-mode)
+         ("\\.edn\\'" . clojure-mode))
+  :init
+  (add-hook 'clojure-mode-hook #'eldoc-mode)
+  (add-hook 'clojure-mode-hook #'idle-highlight-mode))
+
+(use-package typescript-ts-mode
+  :ensure t
+  :mode (("\\.ts\\'" . typescript-ts-mode)
+         ("\\.tsx\\'" . tsx-ts-mode)))

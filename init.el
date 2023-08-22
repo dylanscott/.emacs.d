@@ -35,10 +35,10 @@
 (setq auto-save-file-name-transforms
       `((".*" ,(concat user-emacs-directory "auto-save/") t)))
 
-(use-package emacs
+(use-package base16-theme
+  :ensure t
   :config
-  (require-theme 'modus-themes)
-  (load-theme 'modus-vivendi-tinted t))
+  (load-theme 'base16-ocean t))
 
 (use-package exec-path-from-shell
   :ensure t

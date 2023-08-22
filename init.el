@@ -84,6 +84,14 @@
   :init
   (vertico-mode))
 
+(use-package corfu
+  :ensure t
+  :custom
+  (corfu-cycle t)
+  (corfu-auto t)
+  :init
+  (global-corfu-mode))
+
 (use-package marginalia
   :ensure t
   :init

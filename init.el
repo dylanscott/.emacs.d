@@ -193,3 +193,59 @@
 (use-package typescript-ts-mode
   :mode (("\\.ts\\'" . typescript-ts-mode)
          ("\\.tsx\\'" . tsx-ts-mode)))
+
+(use-package general
+  :config
+  (general-auto-unbind-keys)
+  (general-evil-setup t)
+
+  ;; leader prefixed
+  (general-create-definer leader
+    :prefix "SPC")
+  (leader
+    :states '(motion normal visual)
+    :keymaps 'override
+
+    ;; map universal argument to SPC-u
+    "u" '(universal-argument :which-key "Universal argument")
+
+    ;; consult
+    "c" '(:ignore t :which-key "consult")
+    "cb" '(consult-buffer :which-key "consult-buffer")
+    "cp" '(consult-ls-git-ls-files :which-key "Find file in project")
+    "cP" '(consult-ls-git-ls-files-other-window :which-key "Find file in project (other window)")
+    "cm" '(consult-global-mark :which-key "consult-global-mark")
+    "cM" '(consult-mark :which-key "consult-mark"))
+
+   ;; normal mode
+   (general-define-key
+    :states '(normal visual)
+
+    ;; nagivation
+    "g" '(:ignore t :which-key "navigate")
+    "gr" '(xref-find-references :which-key "Find references")
+    "gd" '(xref-find-definitions :which-key "Find definition(s)")
+
+    ;; refactoring
+    "r" '(:ignore t :whick-key "refactor")
+    "rn" '(eglot-rename :which-key "rename symbol"))
+
+    ;; insert mode
+   (general-define-key
+    :states 'insert
+
+    "C-SPC" 'completion-at-point
+    "M-v" 'yank)
+
+   (general-define-key
+    :keymaps 'evil-ex-search-keymap
+    "M-v" 'yank)
+
+   (general-define-key
+    "M-v" 'yank)
+
+   ;; magit
+   (general-define-key
+    ;; https://github.com/emacs-evil/evil-magit/issues/14#issuecomment-626583736
+    :keymaps 'transient-base-map
+    "<escape>" 'transient-quit-one))

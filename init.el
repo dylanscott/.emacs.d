@@ -44,6 +44,9 @@
   :ensure t
   :init (exec-path-from-shell-initialize))
 
+(use-package magit
+  :ensure t)
+
 (use-package evil
   :demand t
   :bind (("<escape>" . keyboard-escape-quit)

@@ -39,25 +39,12 @@
 (setq auto-save-file-name-transforms
       `((".*" ,(concat user-emacs-directory "auto-save/") t)))
 
-(use-package base16-theme
-  :config
-  (load-theme 'base16-ocean t))
-
-(use-package all-the-icons
-  :if (display-graphic-p))
-
-(use-package all-the-icons-dired
-  :if (display-graphic-p)
-  :hook (dired-mode . all-the-icons-dired-mode))
-
-(use-package all-the-icons-completion
-  :config
-  (all-the-icons-completion-mode)
-  :hook
-  ('marginalia-mode . all-the-icons-completion-marginalia-setup))
-
 (use-package exec-path-from-shell
   :init (exec-path-from-shell-initialize))
+
+(use-package savehist
+  :init
+  (savehist-mode))
 
 (use-package magit)
 
@@ -83,9 +70,24 @@
   :config
   (evil-collection-init))
 
-(use-package savehist
-  :init
-  (savehist-mode))
+(use-package doom-themes
+  :config
+  ;; Global settings (defaults)
+  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+        doom-themes-enable-italic t) ; if nil, italics is universally disabled
+  (load-theme 'doom-spacegrey t)
+
+  ;; Enable flashing mode-line on errors
+  (doom-themes-visual-bell-config)
+  ;; Corrects (and improves) org-mode's native fontification.
+  (doom-themes-org-config))
+
+(use-package all-the-icons
+  :if (display-graphic-p))
+
+(use-package all-the-icons-dired
+  :if (display-graphic-p)
+  :hook (dired-mode . all-the-icons-dired-mode))
 
 (use-package vertico
   :custom

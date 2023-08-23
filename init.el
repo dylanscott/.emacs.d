@@ -32,6 +32,7 @@
       dired-dwim-target t
       file-name-shadow-mode 1
       custom-file (expand-file-name "custom.el" user-emacs-directory))
+(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
 (setq backup-directory-alist

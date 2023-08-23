@@ -43,6 +43,19 @@
   :config
   (load-theme 'base16-ocean t))
 
+(use-package all-the-icons
+  :if (display-graphic-p))
+
+(use-package all-the-icons-dired
+  :if (display-graphic-p)
+  :hook (dired-mode . all-the-icons-dired-mode))
+
+(use-package all-the-icons-completion
+  :config
+  (all-the-icons-completion-mode)
+  :hook
+  ('marginalia-mode . all-the-icons-completion-marginalia-setup))
+
 (use-package exec-path-from-shell
   :init (exec-path-from-shell-initialize))
 

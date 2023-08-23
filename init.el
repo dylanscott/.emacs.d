@@ -28,6 +28,9 @@
       frame-resize-pixelwise t
       load-prefer-newer t
       backup-by-copying t
+      delete-by-moving-to-trash t
+      dired-dwim-target t
+      file-name-shadow-mode 1
       custom-file (expand-file-name "custom.el" user-emacs-directory))
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
@@ -77,6 +80,8 @@
   (read-buffer-completion-ignore-case t)
   (read-file-name-completion-ignore-case t)
   (completion-styles '(basic substring partial-completion flex))
+  :hook
+  ('rfn-eshadow-update-overlay . vertico-directory-tidy)
   :bind (:map vertico-map
               ("C-j" . vertico-next)
               ("C-k" . vertico-previous))

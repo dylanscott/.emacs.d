@@ -23,6 +23,7 @@
 ;; Better default settings
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward
+      use-package-always-ensure t
       window-resize-pixelwise t
       frame-resize-pixelwise t
       load-prefer-newer t
@@ -36,16 +37,13 @@
       `((".*" ,(concat user-emacs-directory "auto-save/") t)))
 
 (use-package base16-theme
-  :ensure t
   :config
   (load-theme 'base16-ocean t))
 
 (use-package exec-path-from-shell
-  :ensure t
   :init (exec-path-from-shell-initialize))
 
-(use-package magit
-  :ensure t)
+(use-package magit)
 
 (use-package evil
   :demand t
@@ -64,7 +62,6 @@
 
 (use-package evil-collection
   :after evil
-  :ensure t
   :custom
   (evil-collection-setup-minibuffer t)
   :config
@@ -75,7 +72,6 @@
   (savehist-mode))
 
 (use-package vertico
-  :ensure t
   :custom
   (vertico-cycle t)
   (read-buffer-completion-ignore-case t)
@@ -88,7 +84,6 @@
   (vertico-mode))
 
 (use-package corfu
-  :ensure t
   :custom
   (corfu-cycle t)
   (corfu-auto t)
@@ -96,12 +91,10 @@
   (global-corfu-mode))
 
 (use-package marginalia
-  :ensure t
   :init
   (marginalia-mode))
 
 (use-package consult
-  :ensure t
   :hook (completion-list-mode . consult-preview-at-point-mode)
   :init
   (setq register-preview-delay 0.5
@@ -111,21 +104,16 @@
         xref-show-definitions-function #'consult-xref)
   (setq consult-narrow-key "<"))
 
-(use-package consult-project-extra
-  :ensure t)
+(use-package consult-project-extra)
 
 (use-package consult-ls-git
-  :ensure t
   :bind
   (("C-c g f" . #'consult-ls-git)
    ("C-c g F" . #'consult-ls-git-other-window)))
 
-(use-package consult-eglot
-  :ensure t)
+(use-package consult-eglot)
 
 (use-package embark
-  :ensure t
-
   :bind
   (("C-." . embark-act)         ;; pick some comfortable binding
    ("M-." . embark-dwim)        ;; good alternative: M-.
@@ -147,12 +135,10 @@
                  (window-parameters (mode-line-format . none)))))
 
 (use-package embark-consult
-  :ensure t
   :hook
   (embark-collect-mode . consult-preview-at-point-mode))
 
-(use-package eglot
-  :ensure t)
+(use-package eglot)
 
 ;; tree-sitter
 (setq treesit-language-source-alist
@@ -170,13 +156,11 @@
      (yaml "https://github.com/ikatyang/tree-sitter-yaml")))
 
 (use-package treesit-auto
-  :ensure t
   :config
   (setq treesit-auto-install 'prompt)
   (global-treesit-auto-mode))
 
 (use-package clojure-mode
-  :ensure t
   :mode (("\\.clj\\'" . clojure-mode)
          ("\\.edn\\'" . clojure-mode))
   :init
@@ -184,6 +168,5 @@
   (add-hook 'clojure-mode-hook #'idle-highlight-mode))
 
 (use-package typescript-ts-mode
-  :ensure t
   :mode (("\\.ts\\'" . typescript-ts-mode)
          ("\\.tsx\\'" . tsx-ts-mode)))

@@ -1,0 +1,15 @@
+*~
+.DS_Store
+auto-save-list
+backups
+eln-cache
+elpa
+eshell
+history
+places
+projects
+recentf
+transient
+tree-sitter
+
+custom.el

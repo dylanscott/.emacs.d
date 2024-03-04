@@ -92,6 +92,10 @@
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config))
 
+(use-package olivetti
+  :hook
+  (org-mode . olivetti-mode))
+
 (use-package vertico
   :custom
   (vertico-cycle t)

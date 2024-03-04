@@ -177,9 +177,13 @@
      (json "https://github.com/tree-sitter/tree-sitter-json")
      (markdown "https://github.com/ikatyang/tree-sitter-markdown")
      (python "https://github.com/tree-sitter/tree-sitter-python")
+     (racket "https://github.com/6cdh/tree-sitter-racket")
+     (rust "https://github.com/tree-sitter/tree-sitter-rust")
+     (scheme "https://github.com/6cdh/tree-sitter-scheme")
      (toml "https://github.com/tree-sitter/tree-sitter-toml")
      (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")
      (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
+     (wasm "https://github.com/wasm-lsp/tree-sitter-wasm")
      (yaml "https://github.com/ikatyang/tree-sitter-yaml")))
 
 (use-package treesit-auto

@@ -194,6 +194,9 @@
   (add-hook 'clojure-mode-hook #'eldoc-mode)
   (add-hook 'clojure-mode-hook #'idle-highlight-mode))
 
+(use-package geiser)
+(use-package geiser-guile)
+
 (use-package typescript-ts-mode
   :mode (("\\.ts\\'" . typescript-ts-mode)
          ("\\.tsx\\'" . tsx-ts-mode)))

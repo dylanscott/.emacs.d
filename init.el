@@ -206,6 +206,20 @@
   :mode (("\\.ts\\'" . typescript-ts-mode)
          ("\\.tsx\\'" . tsx-ts-mode)))
 
+(use-package lispy
+  :hook (emacs-lisp-mode . lispy-mode))
+
+(use-package lispyville
+  :hook (lispy-mode . lispyville-mode)
+  :config
+  (lispyville-set-key-theme
+   '(operators
+     additional
+     (additional-motions normal visual motion)
+     text-objects
+     prettify
+     slurp/barf-lispy)))
+
 (use-package general
   :config
   (general-auto-unbind-keys)

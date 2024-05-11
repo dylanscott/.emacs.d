@@ -220,6 +220,13 @@
     ;; map universal argument to SPC-u
     "u" '(universal-argument :which-key "Universal argument")
 
+    ;; eval
+    "e" '(:ignore t :which-key "eval")
+    "eb" '(eval-buffer :which-key "eval-buffer")
+    "ee" '(eval-expression :which-key "eval-expression")
+    "ef" '(eval-defun :which-key "eval-defun")
+    "es" '(eval-last-sexp :which-key "eval-last-sexp")
+
     ;; consult
     "c" '(:ignore t :which-key "consult")
     "cb" '(consult-buffer :which-key "consult-buffer")

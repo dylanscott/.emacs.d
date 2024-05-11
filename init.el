@@ -227,6 +227,10 @@
     "ef" '(eval-defun :which-key "eval-defun")
     "es" '(eval-last-sexp :which-key "eval-last-sexp")
 
+    ;; refactor
+    "r" '(:ignore t :whick-key "refactor")
+    "rn" '(eglot-rename :which-key "rename symbol")
+
     ;; consult
     "c" '(:ignore t :which-key "consult")
     "cb" '(consult-buffer :which-key "consult-buffer")
@@ -240,13 +244,7 @@
     :states '(normal visual)
 
     ;; nagivation
-    "g" '(:ignore t :which-key "navigate")
-    "gr" '(xref-find-references :which-key "Find references")
-    "gd" '(xref-find-definitions :which-key "Find definition(s)")
-
-    ;; refactoring
-    "r" '(:ignore t :whick-key "refactor")
-    "rn" '(eglot-rename :which-key "rename symbol"))
+    "g" '(:ignore t :which-key "navigate"))
 
     ;; insert mode
    (general-define-key

@@ -192,12 +192,8 @@
   (setq treesit-auto-install 'prompt)
   (global-treesit-auto-mode))
 
-(use-package clojure-mode
-  :mode (("\\.clj\\'" . clojure-mode)
-         ("\\.edn\\'" . clojure-mode))
-  :init
-  (add-hook 'clojure-mode-hook #'eldoc-mode)
-  (add-hook 'clojure-mode-hook #'idle-highlight-mode))
+(use-package clojure-ts-mode)
+(use-package cider)
 
 (use-package geiser)
 (use-package geiser-guile)

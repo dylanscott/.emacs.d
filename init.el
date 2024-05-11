@@ -202,10 +202,6 @@
 (use-package geiser)
 (use-package geiser-guile)
 
-(use-package typescript-ts-mode
-  :mode (("\\.ts\\'" . typescript-ts-mode)
-         ("\\.tsx\\'" . tsx-ts-mode)))
-
 (use-package lispy
   :hook (emacs-lisp-mode . lispy-mode))
 
@@ -219,6 +215,14 @@
      text-objects
      prettify
      slurp/barf-lispy)))
+
+(use-package typescript-ts-mode
+  :mode (("\\.ts\\'" . typescript-ts-mode)
+         ("\\.tsx\\'" . tsx-ts-mode)))
+
+(use-package rust-mode
+  :init
+  (setq rust-mode-treesitter-derive t))
 
 (use-package general
   :config

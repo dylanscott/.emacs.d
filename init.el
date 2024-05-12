@@ -232,7 +232,7 @@
     :states '(motion normal visual)
     :keymaps 'override
 
-    ;; map universal argument to SPC-u
+    "x" '(execute-extended-command :which-key "execute command")
     "u" '(universal-argument :which-key "Universal argument")
 
     ;; eval

@@ -259,7 +259,9 @@
     :states '(normal visual)
 
     ;; nagivation
-    "g" '(:ignore t :which-key "navigate"))
+    "g" '(:ignore t :which-key "navigate")
+    "gr" '(xref-find-references :which-key "Find references")
+    "gd" '(xref-find-definitions :which-key "Find definition(s)"))
 
     ;; insert mode
    (general-define-key

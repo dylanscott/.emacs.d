@@ -43,6 +43,8 @@
 (setq auto-save-file-name-transforms
       `((".*" ,(concat user-emacs-directory "auto-save/") t)))
 
+(setenv "GPG_AGENT_INFO" nil)
+
 (use-package exec-path-from-shell
   :init (exec-path-from-shell-initialize))
 

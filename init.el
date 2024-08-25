@@ -49,6 +49,18 @@
 (setq epa-file-select-keys nil)
 (setq epa-pinentry-mode 'loopback)
 
+;; org-mode
+(setq org-startup-indented t)
+(setq org-bookmark-names-plist '())
+(setq org-capture-templates
+      '(("j" "journal entry" plain (file+olp+datetree "~/Dropbox/Documents/journal.org.gpg")
+         "%<%I:%M:%p>"
+         :prepend t
+         :empty-lines-after 1
+         :immediate-finish t
+         :jump-to-captured t
+         :no-save t)))
+
 (use-package exec-path-from-shell
   :init (exec-path-from-shell-initialize))
 

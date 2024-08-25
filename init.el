@@ -61,9 +61,6 @@
          :jump-to-captured t
          :no-save t)))
 
-(use-package exec-path-from-shell
-  :init (exec-path-from-shell-initialize))
-
 (use-package savehist
   :config
   (savehist-mode))

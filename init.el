@@ -45,7 +45,9 @@
 (setq auto-save-file-name-transforms
       `((".*" ,(concat user-emacs-directory "auto-save/") t)))
 
-(setenv "GPG_AGENT_INFO" nil)
+;; gpg
+(setq epa-file-select-keys nil)
+(setq epa-pinentry-mode 'loopback)
 
 (use-package exec-path-from-shell
   :init (exec-path-from-shell-initialize))

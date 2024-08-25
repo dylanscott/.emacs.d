@@ -53,7 +53,7 @@
 (setq org-startup-indented t)
 (setq org-bookmark-names-plist '())
 (setq org-capture-templates
-      '(("j" "journal entry" plain (file+olp+datetree "~/Dropbox/Documents/journal.org.gpg")
+      '(("j" "journal entry" plain (file+olp+datetree "~/Dropbox/journal.org.gpg")
          "%<%I:%M:%p>"
          :prepend t
          :empty-lines-after 1

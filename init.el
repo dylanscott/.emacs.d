@@ -6,7 +6,8 @@
 
 (setopt package-archives
 	'(("melpa-stable" . "https://stable.melpa.org/packages/")
-	  ("melpa" . "https://melpa.org/packages/")))
+	  ("melpa" . "https://melpa.org/packages/")
+          ("gnu" . "https://elpa.gnu.org/packages/")))
 
 ;; Hide UI
 (menu-bar-mode -1)

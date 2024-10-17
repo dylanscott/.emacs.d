@@ -55,7 +55,7 @@
   (org-bookmark-names-plist '())
   (org-capture-templates
    '(("j" "journal entry" plain (file+olp+datetree "~/Dropbox/journal.org.gpg")
-      "%<%I:%M:%p>"
+      "%<%I:%M %p>"
       :empty-lines-after 1
       :immediate-finish t
       :jump-to-captured t

@@ -45,6 +45,9 @@
 (setq auto-save-file-name-transforms
       `((".*" ,(concat user-emacs-directory "auto-save/") t)))
 
+(setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
+(setq exec-path (append exec-path '("/usr/local/bin")))
+
 ;; gpg
 (setq epa-file-select-keys nil)
 (setq epa-pinentry-mode 'loopback)
